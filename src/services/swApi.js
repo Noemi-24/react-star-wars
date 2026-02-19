@@ -6,10 +6,10 @@ const api = axios.create({
     baseURL: BASE_URL,
 });
 
-export const getStarships = async () =>{
+export const getAllStarships = async () =>{
     try {
     const response = await api.get('/starships'); 
-    return response.data; // The actual data is in the 'data' property of the response
+    return response.data.results; // The actual data is in the 'data' property of the response
   } catch (error) {
     console.error('Error fetching breeds:', error);
     throw error; // Propagate the error for the calling function to handle
