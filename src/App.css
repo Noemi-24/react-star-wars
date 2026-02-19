@@ -5,3 +5,60 @@
   text-align: center;
 }
 
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 70px;
+  font-size: 24px;
+}
+
+main{
+  padding: 1rem;
+  margin-left: 0.5rem;
+}
+
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+li{
+  width: calc(25% - 1rem);
+}
+
+.ship-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 15px;
+  height: 80px;  
+  background-color: rgb(41, 115, 111);
+}
+
+.text-name{
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size: 18px;
+  color: rgb(208, 201, 201);
+}
+
+@media(max-width: 768px){
+  li{
+    width: calc(50% - 1rem);
+  }
+}
+
+@media(max-width: 480px){
+  li{
+    width: 100%;
+  }
+}

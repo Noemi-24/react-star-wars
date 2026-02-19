@@ -1,7 +1,7 @@
 function StartshipCard({name}){
     return(
-        <div>
-            <p>{name}</p>
+        <div className="ship-card">
+            <p className="text-name">{name}</p>
         </div>
     );
 }
