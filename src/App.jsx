@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { getAllStarships } from './services/swApi'; 
-import StartshipCard from './components/StartshipCard'
+import StarshipCard from './components/StarshipCard';
+import StarshipDetails from './components/StarshipDetails';
 
 const App = () => {
-   const [allStarship, setAllStartships] = useState([]);
+  const [allStarship, setAllStarships] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedStarship, setSelectedStarship] = useState(null);
 
   useEffect(() => {
     // Define an async function inside useEffect
     const getData = async () => {
       try {
         const result = await getAllStarships(); // Call the imported function
-        setAllStartships(result);
+        setAllStarships(result);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -38,6 +40,10 @@ const App = () => {
     return <div>Error: {error}</div>;
   }
 
+  const handleItemClick = (starship) => {
+    setSelectedStarship(starship);
+  };
+
    return (
     <>
       <header>
@@ -51,11 +57,26 @@ const App = () => {
           <ul>
             {allStarship.map((starship) => (
               <li key={starship.url}>
-                <StartshipCard name={starship.name}/>
+                <StartshipCard name={starship.name} onClick={() => handleItemClick(starship)}/>
               </li>
             ))}
           </ul>
-        )}        
+        )}  
+
+        {selectedStarship && (
+          <StarshipDetails 
+            name={selectedStarship.name}
+            class={selectedStarship.starship_class}
+            model={selectedStarship.model}
+            manufacturer={selectedStarship.manufacturer}
+            capacity={selectedStarship.cargo_capacity}
+            length={selectedStarship.length}
+            crew={selectedStarship.crew}
+            passengers={selectedStarship.passengers}
+            url={selectedStarship.url}
+          />
+
+        )}      
       </main>
     </>
   )
