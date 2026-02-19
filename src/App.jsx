@@ -66,7 +66,7 @@ const App = () => {
         {selectedStarship && (
           <StarshipDetails 
             name={selectedStarship.name}
-            class={selectedStarship.starship_class}
+            classShip={selectedStarship.starship_class}
             model={selectedStarship.model}
             manufacturer={selectedStarship.manufacturer}
             capacity={selectedStarship.cargo_capacity}
