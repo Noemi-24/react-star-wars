@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'https://swapi.dev/api/';
+const BASE_URL = 'https://swapi.dev/api';
 
 const api = axios.create({
     baseURL: BASE_URL,
@@ -8,7 +8,7 @@ const api = axios.create({
 
 export const getAllStarships = async () =>{
     try {
-    const response = await api.get('/starships'); 
+    const response = await api.get('/starships/'); 
     return response.data.results; // The actual data is in the 'data' property of the response
   } catch (error) {
     console.error('Error fetching breeds:', error);
@@ -16,13 +16,9 @@ export const getAllStarships = async () =>{
   }
 }
 
-export const getStartshipById = async (starshipId) =>{
+export const getStarshipById = async (starshipId) =>{
     try {
-        const response =  await api.get('/starships/', {
-            params:{
-                id: starshipId,
-            },
-        });
+        const response =  await api.get(`/starships/${starshipId}/`);
         return response.data;
     } catch (error) {
         console.error('Error fetching breeds:', error);
