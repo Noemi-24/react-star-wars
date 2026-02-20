@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getStarshipById } from "../services/swApi";
 import Header from './Header';
@@ -39,6 +39,7 @@ function StarshipDetails(){
     return(
       <>
         <Header/>
+        
         <div style={{ marginTop: '20px', border: '1px solid #ccc', padding: '15px' }}>
           <h1>{ship.name}</h1><br/>
           <p><strong>Class:</strong> {ship.starship_class}</p>
@@ -50,6 +51,12 @@ function StarshipDetails(){
           <p><strong>Passengers:</strong> {ship.passengers}. Number of non-essential people this starship can transpport.</p>
           <p><strong>Resource URL:</strong> {ship.url}</p>
         </div>
+
+        <Link to={'/'}>
+          <div>
+              <p className="back-home">	&larr; Go back Home</p>
+          </div>
+        </Link>
       </>
     );
 }
